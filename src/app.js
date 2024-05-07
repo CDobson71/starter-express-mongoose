@@ -8,8 +8,18 @@ app.use(express.json());
 
 // Write your code here
 
+//Connect to MongoDB with Mongoose
+mongoose
+    .connect(process.env.DATABASE_URL, {
+        useNewUrlParser: true
+    })
+    .then(() => {
+        console.log("Connected to MongoDB!")
+    })
+    .catch(error => console.error(error.message));
 
 
+//Routes
 app.use("/users", usersRouter);
 
 // Not found handler
